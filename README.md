@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 # Description
-This application creates an .svg logo with user inputs in the terminal. more to come.
+This application creates an .svg logo with user inputs in the terminal. more to come..
 
 # Table of contents
 - Title 
