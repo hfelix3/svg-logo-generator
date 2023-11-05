@@ -1,11 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {shape} = require('./lib/shapes.js')
+//TODO: insert the required file where shapes where constructed.
+const {Circle, Triangle, Square} = require('./lib/shapes.js')
 
-const circle = new shape('circle');
-const triangle = new shape('triangle');
-const square = new shape('square');
-
+//TODO: start application
 const init = () => {
 
 //TODO: create questions here.
@@ -30,7 +28,7 @@ inquirer
     {
         type: 'input',
         message: 'type the color keyword for your shape',
-        name: 'shape color',
+        name: 'shapeColor',
     },
     
 ]).then((answers) => {
@@ -38,7 +36,7 @@ inquirer
     const { title, textColor, shape, shapeColor } = answers;
       const logoSvg = generateLogoSvg(title, textColor, shape, shapeColor);
 
-    
+    console.log(shapeColor)
     fs.writeFile('logo.svg', logoSvg,(err) =>
     err ? console.log(err) : console.log('Generated logo.svg')
     
@@ -46,8 +44,19 @@ inquirer
     
     const generateLogoSvg = (title, textColor, shape, shapeColor) => {
         // TODO: Generate the SVG string based on the user's input
-        return `<svg>...</svg>`;
+        let chosenShape;
+        if (shape === "circle") {
+            chosenShape = new Circle(shapeColor, title, textColor)
+        }
+        else if (shape === 'triangle') {
+        chosenShape = new Triangle(shapeColor, title, textColor)
+        }
+        else { 
+            chosenShape = new Square(shapeColor, title, textColor)
+        }
+        return chosenShape.render()
       };
 };
     
+//TODO: start application
 init();
